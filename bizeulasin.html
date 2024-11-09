@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap" rel="stylesheet">
+    <form action="path/to/submit_form.php" method="post" onsubmit="return validateForm()"></form>
+    <link rel="icon" type="image/x-icon" href="Logo/Logo.PNG">
 </head>
 <body>
     <div name="Contents">
@@ -41,7 +43,44 @@
             <h1 style="text-align:  center;">Dükkan adresimiz: <a id="reklam" href="https://maps.app.goo.gl/G9rRvic4M3H2o2ALA"> Kdz Eregli, Zonguldak, Gülüc Mahallesi. </a>        
                 </h1>
         </div>
+        <div style="text-align: center;">
+        <h1 style="text-align: center;">Bizlere site hakkinda geri donuslerinizi sunun...
+
+            <form action="submit_form.php" method="post" onsubmit="return validateForm()">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br>
+        
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br>
+        
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="4" required></textarea><br>
+        
+          <!-- reCAPTCHA -->
+            <div class="g-recaptcha" data-sitekey="your-site-key"></div>
+        
+                <button type="submit">Submit</button>
+                </form>
+        </h1>
+
+   
+            </div>
         <h1 style="text-align:  center; font-size: 45px;">This website designed by <a id="reklam" href="https://www.instagram.com/ardaxpinarci/">Arda Pinarci</a></h1>
     </div>
+
+    <script>
+        // Simple form validation for inappropriate language
+        function validateForm() {
+          const message = document.getElementById('message').value;
+          const badWords = ['badword1', 'badword2']; // Replace with your actual bad words list
+          for (let word of badWords) {
+            if (message.includes(word)) {
+              alert('Your message contains inappropriate language. Please revise it.');
+              return false;
+            }
+          }
+          return true;
+        }
+        </script>
 </body>
 </html>
